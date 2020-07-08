@@ -1,0 +1,772 @@
+/*FUENTES -- Importar fuentes*/
+
+@font-face{
+    font-family: "TrebuchetMS";
+    src: url("fonts/TrebuchetMS.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "BebasNeue";
+    src: url("fonts/BebasNeue.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "WebSymbolSRegular";
+    src: url("fonts/websymbols-regular-webfont.eot");
+    src: url("fonts/websymbols-regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("fonts/websymbols-regular-webfont.woff") format("woff"),
+         url("fonts/websymbols-regular-webfont.ttf") format("truetype"),
+         url("fonts/websymbols-regular-webfont.svg#WbeSymbolsRegular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Estilos Generales*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    background: url("../img/pattern.png");
+}
+
+
+.wrap{
+    width: 1250px;
+    margin: 0px auto; /*centrar los enlaces de la cabecera*/
+}
+
+
+.gear, .icon{ /*.icon sustituye las letras en caracteres de formato de dibujo ubg, logotipos ubg ya que la fuente contiene los caracteres*/
+    font-family: "WebSymbolsRegular";
+}
+
+.clearfix{
+    float: none; /*con esto haces un espacio y mandas los articulos al fondo*/
+    clear: both;
+}
+
+/*Estilos a la Cabecera*/
+
+#header{
+    width: 100%;
+    height: 70px;
+    background-color: black;
+    font-family: "BebasNeue";
+    color: white; /*color de letra*/
+}
+
+#logo{
+    float: left;
+    width: 200px;
+    background-color: #37bcf9;
+    text-align: center;
+    margin-top: 8px;
+    margin-left: 20px; /*mover el logo a la izquierda*/
+    letter-spacing: 1px; /*para que las letras se separen un poco*/
+    cursor: pointer; /*para que aparezca el dedo de pulsar*/
+    overflow: hidden; /*todo lo que salga fuera del logo se va a ocultar*/
+    transition: all 300ms;
+}
+
+#logo:hover{ /* hover para darle estilos de: fondo */
+    border-radius: 2px;
+    color: black;
+    background-color: #ccc;
+
+}
+
+#logo .gear{ /*mover los elementos del logo (engranaje y texto)*/
+    display: block;
+    float: left;
+    font-size: 30px;
+    margin-top: 8px;
+    margin-left: 26px;
+    animation-name: rotate-gear;
+    animation-duration: 2s; /*duracion de la animacion*/
+    animation-iteration-count: infinite; /*animacion infinita*/
+    animation-timing-function: linear;/* timing-function: linear - siempre tendra la misma velocidad*/
+}
+
+/*creamos la animacion para que el engranaje gire, con los keyframes
+utilizamos from y to porque es algo sencillo*/
+
+@keyframes rotate-gear{
+    from{  /*from es desde*/
+        transform: rotateZ(0deg); /*rotacion desde 0 grados*/
+
+    }
+    to{   /*hasta donde va a llegar*/
+        transform: rotateZ(360deg);
+    }
+}
+
+#logo:hover .gear{ /* hover para darle estilos de: fondo */
+  animation: fromBellow 500ms linear; /*fromBellow significa desde abajo*/
+}
+
+/*definimos los keyframes a logo:hover -gear*/
+
+@keyframes fromBellow{
+    0%{
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(200%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+
+#logo h3{
+    display: block;
+    float: right;
+    font-size: 40px;
+    margin-top: 5px;
+    margin-right: 65px; /*mover el texto a la derecha*/
+    transition: all 300ms;
+}
+
+#logo:hover h3{
+    animation: fromRight 300ms linear;
+}
+
+@keyframes fromRight{
+    from{
+        transform: translateX(200%); /*translate X(200%) es mover 200% a la derecha, 
+                                     saldra fuera de la caja logotipo y volvera a entrar*/
+    }
+    to{
+        transform: translateX(0%); /*regresara a su estado original*/
+    }
+
+}
+
+#menu {
+    float: right; /*moverlo a la derecha, la caja completa u enlaces q tiene el menu*/
+   /* width: 430px;*/
+    height: 70px;
+    background: transparent;    
+    margin: 0px auto;
+}
+
+
+#menu ul li {
+    font-size: 24px;
+    display: inline-block; /*hace que los enlaces se muevan uno al lado del otro de manera horizontal*/
+    margin: 0px 20px 0px 20px; /* separamos los enlaces del menu, margen*/
+    letter-spacing: 1px; /*para que las letras se separen un poco (MENU)*/
+    line-height: 70px; /*para que mas o menos se quede en el centro de lo que mide el menu*/
+    
+}
+
+#menu ul li a{
+    display: block; /*para que se comporte como un bloque*/
+    color: white;
+    text-decoration: none; /*para que no tenga el subrayado debajo cada enlace*/
+    transition: all 200ms;
+}
+
+/*las transformaciones en CSS nos permite modificar la escala, la rotacion,y modificar texto en CSS sin 
+que afecte a la maquetacion en general, porque es una transformaciones algo estatico en la posicion en la 
+que esta.
+transform - al pasar el raton por los elementos del menu es decir los enlaces estos hacen un efecto*/
+
+
+#menu ul li a:hover{ /*pseudoclase para que cuando el raton pase por el menu haga un efecto*/
+    color: #37bcf9;
+    transform: scale(1.2, 1.2); 
+}
+
+
+/*BANNER*/
+
+#banner{
+    width: 95.5%;
+    height: 100px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 2px gray; /*ligero efecto de sombreado*/
+    background: url("../img/bakbaner.png");
+    background-position: -200px -200px;
+    margin: 20px auto; /*margen por todos lados (general)*/
+    overflow: hidden; /*para que todo lo que salga del texto se oculte*/
+    animation: backBanner 10s linear;
+}
+
+@keyframes backBanner{
+    0%{
+        background-position: 0px 0px; /*al cargar la pag. se quedara en la posicion por defecto que viene la imagen, luego retoma la posicion q hemos configurado*/
+
+    }
+    100%{
+        background-position: -200px -200px;
+
+    }
+}
+
+#banner h1{
+    display: block;
+    width: 850px;
+    font-family: "BebasNeue";/*tipo de letra*/
+    color: white;
+    font-size: 45px; /*tamaño de la letra*/
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 1px black; /*sombras y difuminado*/
+    margin: 25px auto; /*centrar el texto*/
+    animation: showText 10s linear;
+}
+
+@keyframes showText{
+    0%{
+        transform: translateX(-600%) scale(5,5); /*el txto estara movido en x un -600%- Para que esta transform
+                                       se de bien el banner en si debe tener un overflow: hidden par que todo
+                                       lo que salga fuera se oculte */
+        opacity: 1; /*el texto va a estar visible*/
+    }
+    50%{
+        transform: translateX(600%) scale(5,5); /*el texto va a moverse del punto -600% al punto 600% se vera esa animacion*/
+        opacity: 1;
+    }
+    75%{
+        transform: translateX(-600%) scale(5,5);
+        text-shadow: none; /*no hacer nada*/
+        color: transparent; /*ocultar el texto*/
+        opacity: 0; /*se va a desvanecer el texto, se ocultara*/
+    }
+    100%{
+        transform: translateX(0%) scale(1,1);
+        text-shadow: 2px 2px 1px black; 
+        color: white;
+        opacity: 1;
+    }
+}
+
+/*TARJETAS*/
+
+.card{
+    float: left;
+    width: 205px;
+    height: 305px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #ddd;
+    background: white;
+    overflow: hidden;
+    margin: 21px; /*margen entre las cajas*/
+    margin-top: 45px;
+    cursor: pointer;
+    transition: all 300ms; /*hacer el efecto .card:hover colocar la tarjeta de negro*/
+}
+
+.card:hover{ /*hover permite que la tarjeta se coloque en negro*/
+    background: black;
+}
+
+.card:last-child{
+    margin-right: 0px;
+}
+
+.card .icon{
+    display: block;
+    width: 100px;
+    height: 130px;
+    font-size: 50px; /*Ajusta el tamaño del icono*/
+    line-height: 110px; /*Centrado en vertical, subir o bajar en px*/
+    text-align: center;
+    margin: 0px auto;
+    transition: all 300ms;
+}
+
+.card:hover .icon{
+    font-size: 70px;
+    color: #37bcf9;
+    animation: showIcon 300ms linear;
+}
+
+@keyframes showIcon{
+    from{
+        transform: translateY(-200%); /* traslate Y que venga de arriba hacia abajo con -200% y hara que el icono se valla para fuera de
+                                        la tarjeta y la tarjeta debe tener un overFlow: hidden para q funcione*/
+    }
+    to{
+        transform: translateX(0%); /* traslate X que llegue al la mitad de la tarjeta, es decir volver al 0% donde no tiene ningun tipo 
+                                      de transformacion*/
+    }
+
+}
+
+.card .category{
+    width: 100%;
+    height: 50px;
+    font-family: "TrebuchetMS";
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    color: #00538c;
+    transition: all 300ms;
+}
+
+.card:hover .category{
+    color: white;
+    animation: showCategory 400ms linear; /*linear es q tenga la misma velocidad*/
+}
+
+/*los keyframes son los fotogramas y van del 0% al 100% y se puede generar efectos en estos*/
+@keyframes showCategory{
+    from{
+        transform: translateY(-300%);
+        color: black;
+    }
+    to{
+        transform: translateY(0%); /*translatey(0%) es su posicion original*/
+        color: white;
+    }
+}
+
+.card .description{
+    text-align: center;
+    color: #00538c;
+    font-family: "TrebuchetMS";
+    font-size: 15px;
+    transition: all 300ms;
+}
+
+.card:hover .description{
+    color: white;
+    animation: showDescription 300ms linear;
+}
+
+@keyframes showDescription{
+    form{
+        transform: translateX(-300%);
+        color: white;
+    }
+    to{
+        transform: translateX(0%);
+    }
+
+}
+
+
+/*BARRA LATERAL*/
+
+#lateral{
+    width: 300px;
+    min-height: 1200px;
+    font-family: "TrebuchetMS";
+    float: right;
+    margin: 20px /*centramos la caja completa*/;
+}
+
+
+#lateral h3{
+    display: block;
+    width: auto;
+    height: 45px;
+    line-height: 49px; /*centramos los texto que van de encabezados en los form*/
+    background: url("../img/pxgray.png") white;
+    box-shadow: 0px 1px 0px #393d3f, 1px 2px 0px #393d3f, 2px 3px 0px #393d3f, 3px 4px 0px #393d3f;
+    font-size: 30px;
+    font-family: "BebasNeue";
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding-left: 15px; /* rodar a la derecha el texto*/
+    margin-top: 30px /*separacion del texto y los formularios*/;
+    margin-bottom: 15px;
+}
+
+
+#lateral h3:first-child{ /*seleccionamos el id lateral con la pseudoclase*/
+    margin-top: 0px; /*alinear o justificar la caja hacia arriba*/
+}
+
+#search{
+    width: 100%; /*ocupar el 100% de la caja que lo contiene*/
+    height: 30px;
+    margin: 10px auto; /*para que se separe de los lados y se centre*/
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 4px #ccc inset; /*agrear sombras- inset agregamos el efecto de caja undida*/
+}
+
+#lateral input[type="text"]{
+    width: 85%;
+    height: 30px;
+    border: none;
+    padding-left: 5px;
+    border-radius: 5px; /*redondear los bordes*/
+    background-color: transparent; /*para que no tenga fondo*/
+    color: #ccc;
+    transition: all 300ms;
+}
+
+
+#lateral input[type="text"]:focus{
+   color: #555;
+}
+
+
+#lateral input[type="button"],
+#lateral input[type="submit"]{
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    border: none; /* quitarle el borde y none es para que se integre*/
+    border-left: 1px solid #ccc;
+    color: #555;
+    padding-left: 6px;
+}
+
+.aside-box{
+    width: 85%;
+    height: 240px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding-top: 2px;
+    background: white;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.3), 0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+#login input[type="email"],
+#login input[type="password"] {
+    display: block;
+    margin: 0px auto;
+    margin-top: 20px;
+    width: 82%;
+    height: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #ccc inset;
+    border-radius: 5px;
+    padding-left: 30px;
+    color: blue;
+}
+
+/*focus quiere decir que cuando escribes en el formulario la tetras se colocan 
+de acuerdo a color q le indicas y cuando sales del formulario se coloca otro,
+es decir cuando dejas de hacer  focus*/
+
+#login input[type="email"]:focus,
+#login input[type="password"]:focus {
+    color: #555;
+    box-shadow: 1px 1px 1px gray inset;
+}
+
+#login #user,
+#login #password{
+    display: block;
+    text-align: center;
+    position: absolute; /*para poder ponerlo donde me interese*/
+    margin-left: 15px;
+    margin-top: 7px;
+    height: 30px;
+}
+
+#login #password{
+   margin-left: 18px;
+   margin-top: 25px;
+   font-size: 20px; /*tamaño de la fuente*/
+}
+
+#login input[type="submit"],
+#login input[type="button"],
+#login input[type="reset"],
+#login button{
+    display: block; /*para manipularlos como quiera*/
+    text-align: center;
+    width: 100px; /*Ancho*/
+    height: 35px; /*Altura*/
+    margin-top: 20px; /*para que se separen de los elementos de arriba*/
+    color: white;
+    background: linear-gradient(to bottom, #3eb8e5 0%, #2ca0ca 100%);
+    border: 1px solid #156785;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "TrebuchetMS";
+    font-weight: lighter;
+    margin-left: 17px; /*separarlo hacia la derecha*/
+    float: left;
+    margin-bottom: 20px;
+    transition: all 30ms;
+}
+
+#login input[type="submit"]:hover,
+#login input[type="button"]:hover,
+#login input[type="reset"]:hover,
+#login button:hover{
+    box-shadow: 0px 0px 3px gray;
+}
+
+#login a{
+    display: block;
+    font-size: 14px;
+    text-decoration: none; /*sin ningun tipo de subrayado*/
+    margin-left: 18px; /*para que se aplique el margin-left es necesario colocar un display:block*/
+    color: #555;
+}
+
+#login a:hover{
+    text-decoration: underline;
+    color: #2f78bc;
+}
+
+#social {
+    height: 190px;
+}
+
+#social a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px; /*para que tenga separacion entre icono e icono*/
+}
+
+#social .overlay{
+    display: block;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px #ccc;
+    border: 3px solid white;
+    box-shadow: 0px 0px 4px #ccc;
+    background: #f4f7fe;
+    position: absolute;
+    padding: 5px;
+    margin-left: 70px;
+    margin-top: -52px; /* el signo - es para subir los iconos de manera paralela a las letras, facebokk, youtube, twitter*/
+    transform: translateX(-80%); /*ocultar llevandolo a la izquierda, asi causara un efecto*/
+    opacity: 0; /*ocultas las letras, facebook,twitter,youtube*/
+    transition: all 400ms;
+}
+
+#social div:hover .overlay{  /*pasar por encima de los div q contienen las clases*/
+    opacity: 1;  /*para que se muestre*/
+    transform: translateX(0%); /*para que se mueva y se quede en la posicion original*/
+}
+
+
+/*ARTICULOS*/
+
+#articles{
+    float: left; /*con esto subes los articulos de nuevo, pero se ajustan al h2 con margen*/
+    width: 766px;
+}
+
+#articles h2{
+    display: block;
+    width: 100%;
+    height: 75px;
+    line-height: 75px; /*para que el texto se quede centrado*/
+    text-align: center;
+    font-family: "BebasNeue";
+    font-size: 40px;
+    font-weight: normal; /*tipo de fuente, negrita, cursiva...*/
+    letter-spacing: 2px; /*separar las letras o palabras en como tal*/
+    background: url('../img/pxgray.png'), white;
+    box-shadow: 0px 1px 0px #393d3f, 1px 2px 0px #393d3f, 2px 3px 0px #393d3f, 3px 4px 0px #393d3f;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#articles article{
+    width: 98%;
+    height: auto; /*auto es automatica*/
+    border: 1px solid #ccc;
+    margin: 40px auto; /*margen de 40px- por arriba y por debajo de 40px quiere decir que el resto estara centrado*/
+    padding: 10px;
+    font-family: "TrebuchetMS";
+    background: white; /*fondo*/
+    color: black;
+    box-shadow: 1px 1px 2px #ddd;
+}
+
+#articles article h4{
+    display: block;
+    font-size: 23px;
+    margin: 3px;
+}
+
+#articles article h4 a{
+    text-decoration: none; /*none es para que no tenga el texto subrayado*/
+    color: #00538c;
+    
+}
+
+/*pseudoclase hover para que haga el efecto de al pasar por el subtitulo
+ se subraye*/
+
+#articles article h4 a:hover{ 
+    text-decoration: underline;
+}
+
+#articles .data{
+    float: right;
+    background:  #393d3f;
+    color: white;
+    height: 30px;
+    line-height: 30px;/*centrar el texto de manera horizontal, que quede en el centro del fondo*/
+    margin: -10px;
+    padding: 4px;
+    font-size: 13px;
+    border-radius: 0px 0px 0px 5px;
+}
+
+#articles .data span{
+    margin: 6px;
+}
+
+#articles article p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#blog{
+    height: 100px;
+    margin-top: 60px; /*para que se separe de lo de arriba*/
+    line-height: 100px;/*para que se centre y agrande la caja hacia arriba y abajo*/
+    text-align: center;
+    font-family: "BebasNeue";
+    transition: all 1s;
+}
+
+#blog a{
+    display: block; /*porque asi todo el enlace o caja va a se clickcable*/
+    font-family: "BebasNeue";
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: #00538c;
+    text-decoration: none; 
+    transition: all 1s;
+}
+
+#blog:hover{
+    background-color: #333;
+    border: 10px solid #37bcf9;
+    border-radius: 240px;
+    box-shadow: 0px 0px 10px gray;
+    animation: blink 10s infinite linear;
+}
+
+#blog:hover a{
+    color: white;
+    text-shadow: 1px 1px 1px black, 1px 2px 1px black, 1px 3px 1px black, 1px 4px 1px black, 1px 5px 1px black, 1px 6px 1px black;
+}
+
+@keyframes blink{
+    0%{
+        border: 10px solid #37bcf9;
+    }
+    25%{
+        border: 10px solid green;
+    }
+    50%{
+        border: 10px solid yellow;
+    }
+    75%{
+        border: 10px solid white;
+    }
+    100%{
+        border: 10px solid #37bcf9;
+    }
+
+}
+/*FOOTER*/
+
+#footer{
+    width: 100%;
+    height: 470px;
+    background: black;
+    color: white;
+    overflow: hidden; /*para que los iconos y mapa no se salgan del fondo negro*/
+}
+
+#footer .wrap > div{
+    float: left;
+    width: 320px;
+    height: 370px;
+    margin: 40px;
+    text-align: center;
+    color:  white;
+    font-family: "TrebuchetMS";
+}
+
+footer a{
+    text-decoration: none;
+    color: #37bcf9;
+    transition: all 300ms;
+}
+
+#footer h5{
+    display: block;
+    background: url("../img/pxgray.png") white;
+    height: 50px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: "BebasNeue";
+    font-size: 40px;
+    line-height: 55px;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#footer ul{
+    text-align: left;
+    margin: 20px;
+    font-size: 25px;
+}
+
+#footer ul li{
+    margin-top: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#footer ul li a{
+    display: block;
+    height: 40px;
+    transition: all 300ms;
+}
+
+#footer ul li:hover a{ /*con el hover le aplicamos el movimiento*/
+    padding-left: 40px;
+    color: white;
+    width: 100%; /*para q los enlaces ocupen el 100% del ancho de la caja*/
+}
+
+
+#footer iframe{
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    box-shadow: 0px 0px 5px gray;
+}
+
+#footer img{
+    margin-bottom: 15px;
+}
+
+#footer #browsers img{
+    width: 45px;
+}
+
